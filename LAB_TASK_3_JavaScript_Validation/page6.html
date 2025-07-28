@@ -1,0 +1,57 @@
+<html>
+<head>
+    <title>Blood Group Validation</title>
+    <style>
+        .error { color: red; }
+        fieldset {
+            width: 300px;
+            margin: auto;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+        }
+        select {
+            width: 100%;
+            padding: 5px;
+        }
+    </style>
+    <script>
+        function validateBloodGroup() {
+            let bloodGroup = document.getElementById("bloodGroup").value;
+            let error = "";
+
+            if (bloodGroup === "") {
+                error = "Please select a blood group.";
+            }
+
+            document.getElementById("bloodError").innerText = error;
+            return error === "";
+        }
+    </script>
+</head>
+<body>
+
+<form onsubmit="return validateBloodGroup()" method="post" action="#">
+    <fieldset>
+        <legend>Blood Group</legend>
+        <select id="bloodGroup" name="bloodGroup">
+            <option value="">--Select--</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+        </select>
+        <span id="bloodError" class="error"></span>
+    </fieldset>
+    <br>
+    <table align="center">
+        <tr>
+            <td><input type="submit" name="submit" value="Submit"></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

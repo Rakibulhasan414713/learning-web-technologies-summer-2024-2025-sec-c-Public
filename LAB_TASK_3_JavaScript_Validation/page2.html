@@ -1,0 +1,66 @@
+<html>
+<head>
+    <title>Email Validation</title>
+    <style>
+        .error { color: red; }
+        .hint-icon {
+            display: inline-block;
+            margin-left: 5px;
+            color: #555;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            text-align: center;
+            font-size: 12px;
+            line-height: 16px;
+            position: relative;
+        }
+
+        .hint-icon:hover .hint-text {
+            display: block;
+        }
+
+        .hint-text {
+            display: none;
+            position: absolute;
+            top: 20px;
+            left: -10px;
+            background-color: #f9f9f9;
+            color: #333;
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            z-index: 10;
+        }
+    </style>
+    <script>
+        function validateEmail() {
+            let email = document.getElementById("email").value.trim();
+            let error = "";
+
+            if (email === "") {
+                error = "Email cannot be empty.";
+            } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+                error = "Invalid email format.";
+            }
+
+            document.getElementById("emailError").innerText = error;
+            return error === "";
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="return validateEmail()">
+        Email: <input type="text" id="email" name="email">
+        <span class="hint-icon">i
+            <span class="hint-text">Enter a valid email like example@domain.com</span>
+        </span>
+        <span id="emailError" class="error"></span><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

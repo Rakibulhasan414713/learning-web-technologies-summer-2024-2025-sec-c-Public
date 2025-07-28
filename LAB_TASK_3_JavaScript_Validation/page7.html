@@ -1,0 +1,61 @@
+<html>
+<head>
+    <title>Profile Picture Validation</title>
+    <style>
+        .error { color: red; }
+        fieldset {
+            width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+        }
+        table {
+            width: 100%;
+        }
+    </style>
+    <script>
+        function validateProfile() {
+            let userId = document.getElementById("userId").value.trim();
+            let picture = document.getElementById("picture").value;
+            let error = "";
+
+            if (userId === "") {
+                error = "User ID cannot be empty.";
+            } else if (isNaN(userId) || parseInt(userId) <= 0) {
+                error = "User ID must be a positive number.";
+            } else if (picture === "") {
+                error = "Picture must be uploaded.";
+            }
+
+            document.getElementById("profileError").innerText = error;
+            return error === "";
+        }
+    </script>
+</head>
+<body>
+
+<form onsubmit="return validateProfile()" method="post" enctype="multipart/form-data" action="#">
+    <fieldset>
+        <legend>Profile Picture</legend>
+        <table>
+            <tr>
+                <td>User ID</td>
+                <td><input type="text" id="userId" name="userId" value=""></td>
+            </tr>
+            <tr>
+                <td>Picture</td>
+                <td><input type="file" id="picture" name="picture"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <span id="profileError" class="error"></span><br><br>
+                    <input type="submit" name="submit" value="Submit">
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+</form>
+
+</body>
+</html>

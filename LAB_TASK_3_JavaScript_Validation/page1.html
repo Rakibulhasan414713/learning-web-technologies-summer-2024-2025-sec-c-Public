@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title>Name Validation</title>
+    <style>.error { color: red; }</style>
+    <script>
+        function validateName() {
+            let name = document.getElementById("name").value.trim();
+            let error = "";
+
+            if (name === "") {
+                error = "Name cannot be empty.";
+            } else if (!/^[a-zA-Z]/.test(name)) {
+                error = "Name must start with a letter.";
+            } else if (!/^([a-zA-Z.-]+\s+){1,}[a-zA-Z.-]+$/.test(name)) {
+                error = "Name must contain at least two words and only letters, dots, or dashes.";
+            }
+
+            document.getElementById("nameError").innerText = error;
+            return error === "";
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="return validateName()">
+        Name: <input type="text" id="name" name="name">
+        <span id="nameError" class="error"></span><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

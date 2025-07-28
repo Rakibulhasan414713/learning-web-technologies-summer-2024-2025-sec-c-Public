@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Date of Birth Validation</title>
+    <style>
+        .error { color: red; }
+        fieldset {
+            width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .dob-inputs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .dob-inputs input {
+            width: 60px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        function validateDOB() {
+            let day = parseInt(document.getElementById("day").value);
+            let month = parseInt(document.getElementById("month").value);
+            let year = parseInt(document.getElementById("year").value);
+            let error = "";
+
+            if (isNaN(day) || isNaN(month) || isNaN(year)) {
+                error = "All fields must be filled.";
+            } else if (day < 0 || day > 31) {
+                error = "Day must be between 0 and 31.";
+            } else if (month < 1 || month > 12) {
+                error = "Month must be between 1 and 12.";
+            } else if (year < 1900 || year > 2016) {
+                error = "Year must be between 1900 and 2016.";
+            }
+
+            document.getElementById("dobError").innerText = error;
+            return error === "";
+        }
+    </script>
+</head>
+<body>
+
+<form onsubmit="return validateDOB()" method="post" action="#">
+    <fieldset>
+        <legend>Date Of Birth</legend>
+        <div class="dob-inputs">
+            <input type="number" id="day" name="day" placeholder="DD" min="0" max="31">
+            <input type="number" id="month" name="month" placeholder="MM" min="1" max="12">
+            <input type="number" id="year" name="year" placeholder="YYYY" min="1900" max="2016">
+        </div>
+        <span id="dobError" class="error"></span><br><br>
+        <input type="submit" value="Submit">
+    </fieldset>
+</form>
+
+</body>
+</html>
