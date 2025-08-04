@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Unified Job Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div id="logo"><img src="https:" alt="Logo" style="vertical-align: middle;"> <span>JobPortal</span></div>
+        <button id="toggleMode">Switch to User</button>
+        <div id="currentMode">Current Mode: Admin</div>
+    </header>
+
+    <main>
+        <section id="adminSection">
+            <form id="jobForm">
+                <label for="jobTitle">Job Title</label>
+                <input type="text" id="jobTitle" name="jobTitle">
+                <span class="error" id="titleError"></span>
+
+                <label for="location">Location</label>
+                <input type="text" id="location" name="location">
+                <span class="error" id="locationError"></span>
+
+                <label for="type">Job Type</label>
+                <select id="type" name="type">
+                    <option value="">Select Type</option>
+                    <option value="full-time">Full-Time</option>
+                    <option value="part-time">Part-Time</option>
+                    <option value="internship">Internship</option>
+                </select>
+                <span class="error" id="typeError"></span>
+
+                <button type="submit">Post Job</button>
+            </form>
+            <div id="output"></div>
+        </section>
+
+        <section id="userSection" style="display:none;">
+            <h2>Available Jobs</h2>
+            <div id="jobList"></div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
